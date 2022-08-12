@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220812 07:56:27.975" rpa="false" schemaversion="3">
+<suite id="s1" name="loginpageTest" source="C:\Users\jshahavi\Desktop\Git\CloudTest - Copy\Tests\loginpageTest.robot">
+<kw name="Zephyr test cycle" library="commonutility" type="SETUP">
+<kw name="Create Cycle" library="Zephyrcycle">
+<var>${cycle}</var>
+<msg timestamp="20220812 07:56:29.873" level="INFO">CLOUDV-R156 created
+The testcycle ID is when zephyr cycle created :CLOUDV-R156</msg>
+<msg timestamp="20220812 07:56:29.873" level="INFO">${cycle} = CLOUDV-R156</msg>
+<status status="PASS" starttime="20220812 07:56:28.948" endtime="20220812 07:56:29.873"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${testcycle}</arg>
+<arg>${cycle}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220812 07:56:29.874" level="INFO">${testcycle} = CLOUDV-R156</msg>
+<status status="PASS" starttime="20220812 07:56:29.874" endtime="20220812 07:56:29.874"/>
+</kw>
+<status status="PASS" starttime="20220812 07:56:28.948" endtime="20220812 07:56:29.874"/>
+</kw>
+<test id="s1-t1" name="CLOUDV-T2384: Verify Cloudvue Manager Valid Login" line="24">
+<kw name="Open Web Browser" library="commonutility">
+<arg>${cloudvuemanagerURL}</arg>
+<arg>${browser}</arg>
+<doc>The objective of this method is to open browser on the browserstack or local based on the request</doc>
+<if>
+<branch type="IF" condition="&quot;${platform}&quot; == &quot;bstack&quot;">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${cloudvuemanagerURL}</arg>
+<arg>${browser}</arg>
+<arg>remote_url=${REMOTE_URL}</arg>
+<arg>desired_capabilities=browser:${browser},browser_version:${BROWSER_VERSION},os:${os},os_version:${OS_VERSION}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220812 07:56:29.878" level="INFO">Opening browser 'chrome' to base url 'https://dev-dashboard.cloudvue.com/login' through remote server at 'http://vishal_Yj93pt:rGsfJG6dJHpee7QFSuAW@hub-cloud.browserstack.com/wd/hub'.</msg>
+<status status="PASS" starttime="20220812 07:56:29.877" endtime="20220812 07:56:37.922"/>
+</kw>
+<kw name="Get Session Id" library="SeleniumLibrary">
+<var>${browserid2}</var>
+<doc>Returns the currently active browser session id.</doc>
+<msg timestamp="20220812 07:56:37.924" level="INFO">${browserid2} = 0c7e04f9619dd5733ed784cfd0c69b20bec30caa</msg>
+<status status="PASS" starttime="20220812 07:56:37.923" endtime="20220812 07:56:37.924"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${browserid}</arg>
+<arg>${browserid2}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220812 07:56:37.926" level="INFO">${browserid} = 0c7e04f9619dd5733ed784cfd0c69b20bec30caa</msg>
+<status status="PASS" starttime="20220812 07:56:37.924" endtime="20220812 07:56:37.926"/>
+</kw>
+<status status="PASS" starttime="20220812 07:56:29.877" endtime="20220812 07:56:37.926"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${platform}&quot; == &quot;local&quot;">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${cloudvuemanagerURL}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="NOT RUN" starttime="20220812 07:56:37.927" endtime="20220812 07:56:37.927"/>
+</kw>
+<status status="NOT RUN" starttime="20220812 07:56:37.927" endtime="20220812 07:56:37.927"/>
+</branch>
+<status status="PASS" starttime="20220812 07:56:29.877" endtime="20220812 07:56:37.928"/>
+</if>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220812 07:56:37.928" endtime="20220812 07:56:38.190"/>
+</kw>
+<status status="PASS" starttime="20220812 07:56:29.876" endtime="20220812 07:56:38.190"/>
+</kw>
+<kw name="Input User Name" library="loginpage">
+<arg>${staffusername}</arg>
+<doc>The objective of this method is to write the staff email ID</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${staffusernameid}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220812 07:56:38.192" level="INFO">Clicking element 'id:loginEmail'.</msg>
+<status status="PASS" starttime="20220812 07:56:38.192" endtime="20220812 07:56:39.684"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${staffusernameid}</arg>
+<arg>${staffusername}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220812 07:56:39.685" level="INFO">Typing text 'shahavp71@gmail.com' into text field 'id:loginEmail'.</msg>
+<status status="PASS" starttime="20220812 07:56:39.684" endtime="20220812 07:56:40.803"/>
+</kw>
+<status status="PASS" starttime="20220812 07:56:38.191" endtime="20220812 07:56:40.803"/>
+</kw>
+<kw name="Input password" library="loginpage">
+<arg>${staffpassword}</arg>
+<doc>The objective of this method is to write the staff Login password</doc>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${staffpasswordid}</arg>
+<arg>${staffpassword}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220812 07:56:40.806" level="INFO">Typing text 'Jci@12345' into text field 'id:loginPassword'.</msg>
+<status status="PASS" starttime="20220812 07:56:40.805" endtime="20220812 07:56:42.177"/>
+</kw>
+<status status="PASS" starttime="20220812 07:56:40.804" endtime="20220812 07:56:42.177"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220812 07:56:42.178" endtime="20220812 07:56:43.424"/>
+</kw>
+<kw name="Zephyr Result" library="Zephyrscale" type="TEARDOWN">
+<msg timestamp="20220812 07:57:28.736" level="INFO">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Driver ID 0c7e04f9619dd5733ed784cfd0c69b20bec30caa
+Test UserName vishal_Yj93pt
+Test AccessKey rGsfJG6dJHpee7QFSuAW</msg>
+<msg timestamp="20220812 07:57:28.736" level="FAIL">JSONDecodeError: Expecting value: line 1 column 1 (char 0)</msg>
+<status status="FAIL" starttime="20220812 07:56:43.425" endtime="20220812 07:57:28.753">JSONDecodeError: Expecting value: line 1 column 1 (char 0)</status>
+</kw>
+<status status="FAIL" starttime="20220812 07:56:29.875" endtime="20220812 07:57:28.755">Teardown failed:
+JSONDecodeError: Expecting value: line 1 column 1 (char 0)</status>
+</test>
+<status status="FAIL" starttime="20220812 07:56:27.977" endtime="20220812 07:57:28.758"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="loginpageTest">loginpageTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
